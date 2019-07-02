@@ -1,0 +1,16 @@
+{
+	"name": "iwc/restricted-authors",
+	"description": "Restricted Authors Composer for Coding Standards",
+	"authors": [
+	    {
+		   "name": "Chris Kelley",
+		   "email": "chris@organicbeemedia.com"
+	    }
+	 ],
+	 "require-dev": {
+	    "dealerdirect/phpcodesniffer-composer-installer": "*",
+	    "object-calisthenics/phpcs-calisthenics-rules": "*",
+	    "phpcompatibility/php-compatibility": "*",
+	    "wp-coding-standards/wpcs": "*"
+	}
+ }

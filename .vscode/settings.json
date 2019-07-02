@@ -1,0 +1,5 @@
+{
+	"phpcs.standard": "./phpcs.xml",
+	"editor.insertSpaces": false,
+	"editor.tabSize": 5,
+}
