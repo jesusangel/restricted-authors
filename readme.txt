@@ -1,4 +1,4 @@
-=== Change Recovery Email ===
+=== Restricted Authors ===
 Contributors: chrisakelley
 Requires at least: 5.2
 Tested up to: 5.2
