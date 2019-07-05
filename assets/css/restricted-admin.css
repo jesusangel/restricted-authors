@@ -1,6 +1,14 @@
 /*===============================
 =            Choices            =
 ===============================*/
+.form-table .choices {
+  max-width: 500px;
+}
+.form-table .choices input[type=text] {
+  background-color: transparent;
+  border: 0;
+}
+
 .choices {
   position: relative;
   margin-bottom: 24px;

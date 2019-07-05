@@ -1,0 +1,70 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Restricted Authors.\n"
+"POT-Creation-Date: 2019-07-05 11:54-0500\n"
+"PO-Revision-Date: 2019-07-05 11:55-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.3\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: restricted-authors.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Poedit-SearchPathExcluded-1: vendor\n"
+
+#: restricted-authors.php:77 restricted-authors.php:86
+msgid "Cheating huh?"
+msgstr "Etwa mogeln?"
+
+#: restricted-authors.php:232
+msgid "Restricted Categories"
+msgstr "Eingeschränkte Kategorien"
+
+#: restricted-authors.php:236
+msgid "Select Restricted Categories"
+msgstr "Wählen Sie eingeschränkte Kategorien"
+
+#: restricted-authors.php:237
+msgid "Categories the author is restricted to posting."
+msgstr "Kategorien, die der Autor auf das Buchen beschränkt ist."
+
+#: restricted-authors.php:257
+msgid "Select Default Category"
+msgstr "Standardkategorie auswählen"
+
+#: restricted-authors.php:258
+msgid "Author Default Category."
+msgstr "Author-Standardkategorie."
+
+#. Plugin Name of the plugin/theme
+msgid "Restricted Authors."
+msgstr "Eingeschränkte Autoren."
+
+#. Plugin URI of the plugin/theme
+msgid "https://iwritecode.blog/plugins/restricted-authors"
+msgstr "https://iwritecode.blog/plugins/restricted-authors"
+
+#. Description of the plugin/theme
+msgid ""
+"A plugin to set categories for authors and prevent them posting in others."
+msgstr ""
+"Ein Plugin, um Kategorien für Autoren festzulegen und zu verhindern, dass "
+"sie in anderen veröffentlicht werden."
+
+#. Author of the plugin/theme
+msgid "Chris Kelley"
+msgstr "Chris Kelley"
+
+#. Author URI of the plugin/theme
+msgid "https://iwritecode.blog"
+msgstr "https://iwritecode.blog"

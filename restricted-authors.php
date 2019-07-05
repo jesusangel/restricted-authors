@@ -5,7 +5,7 @@
  * Description: A plugin to set categories for authors and prevent them posting in others.
  * Author:      Chris Kelley
  * Author URI:  https://iwritecode.blog
- * Version:     1.0.0
+ * Version:     1.1.0
  * Text Domain: restricted-authors
  * Domain Path: languages
  *
@@ -58,7 +58,7 @@ final class Restricted_Authors {
 	 *
 	 * @var string
 	 */
-	public $version = '1.0.0';
+	public $version = '1.1.0';
 	/**
 	 * Undocumented variable
 	 *
@@ -104,7 +104,21 @@ final class Restricted_Authors {
 		add_filter( 'rest_category_query', [ $this, 'filter_rest' ], 10, 2 );
 		add_filter( 'pre_option_default_category', [ $this, 'change_default_category' ] );
 
+		add_action( 'init', [ $this, 'load_textdomain' ] );
+
 		do_action( 'restricted_authors_init' );
+
+	}
+
+	/**
+	 * Helper Method to load textdomain
+	 *
+	 * @since 1.1.0
+	 *
+	 * @return void
+	 */
+	public function load_textdomain() {
+		load_plugin_textdomain( 'restricted-authors', false, trailingslashit( dirname( plugin_basename( $this->file ) ) ) . 'languages' );
 	}
 
 	/**
@@ -222,54 +236,8 @@ final class Restricted_Authors {
 			return;
 		}
 
-		$terms                      = get_terms( 'category', [ 'hide_empty' => false ] );
-		$default_user_category      = get_user_meta( $user->ID, '_restricted_authors_default_category', true );
-		$restricted_user_categories = is_array( get_user_meta( $user->ID, '_restricted_authors_restricted_category', true ) ) ? get_user_meta( $user->ID, '_restricted_authors_restricted_category', true ) : [];
+		require_once plugin_dir_path( $this->file ) . 'includes/Views/profile-fields.php';
 
-		?>
-		<?php wp_nonce_field( 'restricted_authors', 'restricted_authors_profile' ); ?>
-
-		<h3><?php esc_html_e( 'Restricted Categories', 'restricted-authors' ); ?></h3>
-		<table class="form-table">
-			<tr>
-				<th>
-					<label for="restricted_categories[]"><?php esc_html_e( 'Select Restricted Categories', 'restricted-authors' ); ?>:</label><br />
-					<span class="description"><?php esc_html_e( 'Categories the author is restricted to posting.', 'restricted-authors' ); ?></span>
-				</th>
-				<td>
-				<select name="restricted_categories[]" id="restricted-categories" class="restricted-authors-select" multiple>
-					<?php
-					foreach ( $terms as $term ) :
-
-						$selected = in_array( strval( $term->term_id ), $restricted_user_categories, true ) ? " selected='selected'" : '';
-
-						?>
-
-						<option value="<?php echo esc_attr( intval( $term->term_id ) ); ?>" <?php echo esc_attr( $selected ); ?> ><?php echo esc_html( $term->name ); ?></option>
-					<?php endforeach; ?>
-				</select>
-			</td>
-		</tr>
-		</table>
-		<table class="form-table">
-			<tr>
-				<th>
-					<label for="restricted_default"><?php esc_html_e( 'Select Default Category', 'restricted-authors' ); ?>:</label><br />
-					<span class="description"><?php esc_html_e( 'Author Default Category.', 'restricted-authors' ); ?></span>
-				</th>
-				<td>
-				<select name="restricted_default" id="" class="restricted-authors-select">
-					<?php foreach ( $terms as $term ) : ?>
-						<option value="<?php echo esc_attr( $term->term_id ); ?>" <?php selected( intval( $term->term_id ), intval( $default_user_category ) ); ?> ><?php echo esc_html( $term->name ); ?></option>
-					<?php endforeach; ?>
-				</select>
-			</td>
-		</tr>
-		</table>
-		<script>
-			const choices = new Choices('.restricted-authors-select', { removeItemButton: true });
-		</script>
-		<?php
 	}
 
 	/**
@@ -295,6 +263,7 @@ final class Restricted_Authors {
 		update_user_meta( $user_id, '_restricted_authors_restricted_category', $restricted_cats );
 		update_user_meta( $user_id, '_restricted_authors_default_category', $default_cat );
 	}
+
 	/**
 	 * Gets Singleton Instance
 	 *
