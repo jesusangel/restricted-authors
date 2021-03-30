@@ -217,7 +217,10 @@ final class Restricted_Authors {
 		}
 		$restricted_categories = get_user_meta( $current_user->ID, '_restricted_authors_restricted_category', true );
 
-		$args['include'] = $restricted_categories;
+		// Don't filter terms if there aren't any restricted_categories or if we are in a XHR request such as wp-admin/admin-ajax.php
+		if ( !empty( $restricted_categories ) && !wp_doing_ajax() ) {
+			$args['include'] = $restricted_categories;
+		}
 
 		return $args;
 	}
